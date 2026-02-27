@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.template.ui.mainController"
+            style="-fx-background-color: #1b1b2f; -fx-font-family: 'Tahoma';">
+
+    <!-- LEFT SIDE CONTROL PANEL -->
+    <left>
+        <VBox spacing="10"
+              style="-fx-padding: 20; -fx-background-color: #162447;"
+              prefWidth="280">
+
+            <Label text="Student Manager"
+                   style="-fx-text-fill: #e43f5a; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <TextField fx:id="studentIdField" promptText="Student ID"/>
+            <TextField fx:id="nameField" promptText="Full Name"/>
+            <TextField fx:id="programmeField" promptText="Programme"/>
+            <TextField fx:id="levelField" promptText="Level"/>
+            <TextField fx:id="gpaField" promptText="GPA"/>
+            <TextField fx:id="emailField" promptText="Email"/>
+            <TextField fx:id="phoneField" promptText="Phone"/>
+            <ComboBox fx:id="statusBox" promptText="Status"/>
+
+            <Separator/>
+
+            <!-- Updated Button Colors -->
+            <Button text="Add" onAction="#handleAddStudent"
+                    style="-fx-background-color: #ff6f61; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Edit" onAction="#handleEditStudent"
+                    style="-fx-background-color: #6a0572; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Delete" onAction="#handleDeleteStudent"
+                    style="-fx-background-color: #ffbe0b; -fx-text-fill: black; -fx-font-weight: bold;"/>
+            <Button text="Refresh" onAction="#handleRefresh"
+                    style="-fx-background-color: #3fb68b; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+            <Separator/>
+
+            <TextField fx:id="gpaThresholdField" promptText="GPA Threshold"/>
+
+            <ComboBox fx:id="sortByComboBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Name"/>
+                        <String fx:value="GPA"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Button text="Generate Report" onAction="#handleOpenReportWindow"
+                    style="-fx-background-color: #0b3c5d; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER TABLE -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <Label text="Student Records" style="-fx-text-fill: #e43f5a; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <TableView fx:id="studentTable"
+                       style="-fx-background-color: #ffffff; -fx-border-color: #e43f5a; -fx-border-width: 2;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+                    <TableColumn fx:id="colName" text="Name" prefWidth="140"/>
+                    <TableColumn fx:id="colProgramme" text="Programme" prefWidth="130"/>
+                    <TableColumn fx:id="colLevel" text="Level" prefWidth="80"/>
+                    <TableColumn fx:id="colGpa" text="GPA" prefWidth="80"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox style="-fx-background-color: #0f3460; -fx-padding: 15;">
+            <Label text="📚 Student Console" style="-fx-text-fill: #08d9d6; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+</BorderPane>
